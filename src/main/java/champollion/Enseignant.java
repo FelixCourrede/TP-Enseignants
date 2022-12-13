@@ -22,7 +22,7 @@ public class Enseignant extends Personne {
         for(int k=0; k<Services.size();k++){
             T+=Services.get(k).getTD();
             T+=Services.get(k).getCM()*1.5;
-            T+=Services.get(k).getTD()*0.5;
+            T+=Services.get(k).getTP()*0.75;
         }
         return(T);
     }
@@ -43,7 +43,7 @@ public class Enseignant extends Personne {
             if(Services.get(k).getUE()==sRef){
                 T+=Services.get(k).getTD();
                 T+=Services.get(k).getCM()*1.5;
-                T+=Services.get(k).getTP()*0.5;
+                T+=Services.get(k).getTP()*0.75;
             }
         }
         return(T);

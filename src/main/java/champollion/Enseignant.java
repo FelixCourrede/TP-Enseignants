@@ -17,9 +17,9 @@ public class Enseignant extends Personne {
      * @return le nombre total d'heures "équivalent TD" prévues pour cet enseignant, arrondi à l'entier le plus proche
      *
      */
-    public float heuresPrevues() {
+    public int heuresPrevues() {
         int T=0;
-        for(int k=0; k<Services.size()+1;k++){
+        for(int k=0; k<Services.size();k++){
             T+=Services.get(k).getTD();
             T+=Services.get(k).getCM()*1.5;
             T+=Services.get(k).getTD()*0.5;
@@ -36,13 +36,17 @@ public class Enseignant extends Personne {
      * @return le nombre total d'heures "équivalent TD" prévues pour cet enseignant, arrondi à l'entier le plus proche
      *
      */
-    public float heuresPrevuesPourUE(UE ue) {
-            int T=0;
-            UE sRef=ue;
-            for( int k=0; k<=Services.size(); k++){
-                
+    public int heuresPrevuesPourUE(UE ue) {
+        int T=0;
+        UE sRef=ue;
+        for( int k=0; k<Services.size(); k++){
+            if(Services.get(k).getUE()==sRef){
+                T+=Services.get(k).getTD();
+                T+=Services.get(k).getCM()*1.5;
+                T+=Services.get(k).getTP()*0.5;
             }
-            return(T);
+        }
+        return(T);
     }
 
     /**

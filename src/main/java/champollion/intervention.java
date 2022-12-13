@@ -10,7 +10,8 @@ public class intervention {
         cours=b;
         Type=c;
     }
-    public String getUE(){return(cours.getIntitule());}
+    public UE getUE(){return(cours);}
     public TypeIntervention getType(){return(Type);}
     public int getduree(){return(duree);}
+    public String getnom(){return(cours.getIntitule());}
 }

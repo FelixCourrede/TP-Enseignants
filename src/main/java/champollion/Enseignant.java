@@ -2,8 +2,8 @@ package champollion;
 import java.util.ArrayList;
 
 public class Enseignant extends Personne {
-    ArrayList<intervention> Cours;
-    ArrayList<ServicePrevu> Services;
+    ArrayList<intervention> Cours= new ArrayList<intervention>();
+    ArrayList<ServicePrevu> Services = new ArrayList<ServicePrevu>();
 
     public Enseignant(String nom, String email) {
         super(nom, email);
@@ -19,17 +19,10 @@ public class Enseignant extends Personne {
      */
     public float heuresPrevues() {
         int T=0;
-        for(int k=0; k<=Cours.size();k++){
-            TypeIntervention y = Cours.get(k).getType();
-            if(y==TypeIntervention.CM){
-                T+=Cours.get(k).getduree()*1.5;
-            }
-            if(y==TypeIntervention.TD){
-                T+=Cours.get(k).getduree();
-            }
-            if(y==TypeIntervention.TP){
-                T+=Cours.get(k).getduree()*0.5;
-            }
+        for(int k=0; k<Services.size()+1;k++){
+            T+=Services.get(k).getTD();
+            T+=Services.get(k).getCM()*1.5;
+            T+=Services.get(k).getTD()*0.5;
         }
         return(T);
     }
@@ -43,9 +36,13 @@ public class Enseignant extends Personne {
      * @return le nombre total d'heures "équivalent TD" prévues pour cet enseignant, arrondi à l'entier le plus proche
      *
      */
-    public int heuresPrevuesPourUE(UE ue) {
-        // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+    public float heuresPrevuesPourUE(UE ue) {
+            int T=0;
+            UE sRef=ue;
+            for( int k=0; k<=Services.size(); k++){
+                
+            }
+            return(T);
     }
 
     /**
@@ -57,7 +54,8 @@ public class Enseignant extends Personne {
      * @param volumeTP le volume d'heures de TP
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
-        
+        ServicePrevu S = new ServicePrevu(volumeTD, volumeTP, volumeCM, ue);
+        Services.add(S);
     }
 
 }

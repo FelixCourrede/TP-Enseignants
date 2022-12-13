@@ -12,4 +12,8 @@ public class ServicePrevu {
 		heureCM=c;
 		cours=d;
 	}
+	public int getTD(){return(heureTD);}
+	public int getTP(){return(heureTP);}
+	public int getCM(){return(heureCM);}
+	public UE getUE(){return(cours);}
 }
